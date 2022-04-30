@@ -1,0 +1,97 @@
+.container-world {
+  width: 100vw;
+  /* flex: 5; */
+  /* height: 100vh; */
+  overflow-y: hidden;
+  /* overflow-x: hidden; */
+  /* border-right: 5px solid black; */
+  margin: auto;
+  background-color: brown;
+  /* display: flex; */
+}
+
+.container-world::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.background {
+  width: 300rem;
+  /* height: 100vh; */
+}
+
+.grid {
+  /* width: 300rem; */
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  /* grid-template-rows: repeat(25, 1fr); */
+  grid-template-rows: repeat(20, 1fr);
+}
+
+.grid .cell {
+  border: 1px solid red;
+}
+
+.grid .cell:hover {
+  border: 3px solid green;
+}
+
+.grid [data-open="true"] {
+  background-color: skyblue;
+}
+
+.floor-tile-up,
+[tileType="floor-tile-up"] {
+  background-image: url("../weekendImg/Spritesheet.png");
+}
+.floor-tile-center,
+[tileType="floor-tile-center"] {
+  background-image: url("../weekendImg/Spritesheet.png");
+  background-position: -3rem 0;
+}
+.rock1,
+[tileType="rock1"] {
+  background-image: url("../weekendImg/Spritesheet.png");
+  background-position: -6rem 0;
+}
+.rock2,
+[tileType="rock2"] {
+  background-image: url("../weekendImg/Spritesheet.png");
+  background-position: -9rem -3rem;
+}
+.rock3,
+[tileType="rock3"] {
+  background-image: url("../weekendImg/Spritesheet.png");
+  background-position: -12rem -3rem;
+}
+.rock4,
+[tileType="rock4"] {
+  background-image: url("../weekendImg/Spritesheet.png");
+  background-position: -15rem -3rem;
+}
+.rock5,
+[tileType="rock5"] {
+  background-image: url("../weekendImg/Spritesheet.png");
+  background-position: 0rem -6rem;
+}
+
+.wall,
+[tileType="wall"] {
+  background-image: url("../weekendImg/Spritesheet.png");
+  background-position: 0 -9rem;
+}
+.tree-trunk,
+[tileType="tree-trunk"] {
+  background-image: url("../weekendImg/Spritesheet.png");
+  background-position: -15rem 0;
+}
+.tree-leaf,
+[tileType="tree-leaf"] {
+  background-image: url("../weekendImg/Spritesheet.png");
+  background-position: 0 -3rem;
+}
+
+/* animation alert */
+/* .WrongToolAlert {
+  background: r;
+} */

@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "mineCraft";
+  src: url("../font/Minecraft.ttf");
+}
+
+html {
+  font-size: 10px;
+  font-family: "mineCraft";
+  text-align: center;
+}
+
+/* body {
+} */
+
+.container-all {
+  display: flex;
+  width: 100vw;
+}
+
+/* h2 {
+  font-family: "mineCraft";
+} */
