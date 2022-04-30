@@ -1,6 +1,6 @@
 @font-face {
   font-family: "mineCraft";
-  src: url("./font/Minecraft.ttf");
+  src: url("../font/Minecraft.ttf");
 }
 
 * {
@@ -15,7 +15,7 @@ body {
 }
 
 #landing-page {
-  background: url("./weekendImg/land.jpg");
+  background: url("../weekendImg/land.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100vw;
