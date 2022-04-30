@@ -9,6 +9,7 @@ export const toolsObj = {
   activeStored: "",
 };
 
+// define tool to work with
 toolsObj.chooseTool = function () {
   tools.forEach((tool) => {
     tool.addEventListener("click", (e) => {
@@ -24,14 +25,23 @@ toolsObj.chooseTool = function () {
   });
 };
 
-// toolsObj.chooseTool();
-
 //Get correct tile by choosing correct tool. if so add tile to inventory and remove from world
 toolsObj.getTile = function (world, inventory) {
   world.forEach((row, i) => {
     row.forEach((tile, j) => {
       tile.addEventListener("click", () => {
         toolsObj.takeFromInventory();
+        if (this.activeStored[0]) {
+          world[i][j].setAttribute("tileType", this.activeStored[0].getAttribute("tileType"));
+          world[i][j].setAttribute("data-open", "false");
+          this.activeStored[0].animate(rotateTile, animateTiming);
+          inventory.removeChild(this.activeStored[0]);
+          this.storedTiles.splice([this.activeStored[1]], 1);
+          this.activeStored[0] = undefined;
+          this.activeStored[1] = undefined;
+          tile.animate(rotateTile, animateTiming);
+          return;
+        }
         if (this.activeTileList.includes(tile.getAttribute("tileType"))) {
           if (inventory.childElementCount < 13 && tile.getAttribute("data-open") === "false") {
             let tempTile = document.createElement("button");
@@ -47,7 +57,7 @@ toolsObj.getTile = function (world, inventory) {
           world[i][j].setAttribute("data-open", "true");
           tile.animate(rotateTile, animateTiming);
         } else if (tile.getAttribute("data-open") === "false") {
-          console.log("x");
+          // console.log("x");
           tile.animate(wrongTool, animateTiming);
         }
       });
@@ -64,25 +74,15 @@ const animateTiming = {
   iterations: 1,
 };
 
-// toolsObj.takeFromInventory = function () {
-//   console.log(this.storedTiles);
-//   this.storedTiles.forEach((stored, idx) => {
-//     stored.addEventListener("click", () => {
-//       console.log("inventory");
-//       stored.classList.add("active-stored");
-//     });
-//   });
-// };
-
 toolsObj.takeFromInventory = function () {
-  this.storedTiles.forEach((stored) => {
+  this.storedTiles.forEach((stored, idx) => {
     stored.addEventListener("click", (e) => {
       if (document.querySelector("button.active-stored")) {
         document.querySelector("button.active-stored").classList.remove("active-stored");
       }
       stored.classList.add("active-stored");
       if (stored.classList.contains("active-stored")) {
-        this.activeStored = e.target;
+        this.activeStored = [e.target, idx];
         // this.activeTileList = this[this.activestored];
       }
     });
