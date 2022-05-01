@@ -25,22 +25,6 @@ export function drawWorld(obj) {
   return gridDivsList;
 }
 
-//! not working yet floor pyshics
-function apllyPyshics(world) {
-  if (
-    i > 1 &&
-    i < 18 &&
-    j > 1 &&
-    j < 90 &&
-    world[i][j].getAttribute("data-open", "false") &&
-    world[i + 1][j].getAttribute("data-open", "true")
-  ) {
-    world[i + 1][j] = world[i][j];
-    world[i][j].setAttribute("data-open", "true");
-    world[i][j].setAttribute("data-open", "false");
-  }
-}
-
 // draw floor with random hight
 export function drawFloor() {
   let tileType;
