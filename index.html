@@ -4,47 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./landing.css" />
+    <script src="https://kit.fontawesome.com/35d411cefd.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style/landing.css" />
     <title>Minecraft</title>
-    <!-- <link rel="stylesheet" href="./style.css" /> -->
-    <link rel="stylesheet" href="./style/style1.css" />
-    <link rel="stylesheet" href="./style/gameBoard.css" />
-    <link rel="stylesheet" href="./style/sideWindow.css" />
-    <!-- <script src="https://kit.fontawesome.com/35d411cefd.js" crossorigin="anonymous"></script> -->
   </head>
   <body>
-    <div class="container-all">
-      <div class="container-world">
-        <div class="background">
-          <div class="grid"></div>
-        </div>
-      </div>
-      <div data-view="vertical" class="window">
-        <!-- <i class="fa-solid fa-window-frame"></i> -->
-        <div class="container-window">
-          <div class="setting">
-            <button id="change-view">change-view</button>
-            <button id="random">Random</button>
-            <button id="save">Save</button>
-            <button id="reset">Reset</button>
-            <button id="load">Load</button>
-          </div>
-          <div class="tools-container">
-            <button data-open="false" class="tools" id="pickaxe"></button>
-            <button data-open="false" class="tools" id="shovel"></button>
-            <button data-open="false" class="tools" id="axe"></button>
-            <!-- <input data-open="false" class="tools" id="axe" type="checkbox" /> -->
-          </div>
-          <br />
-          <!-- <h2>Tile Inventory: </h3> -->
-          <div class="inventory">
-            <!-- will be possible by tool data open true -->
-            <!-- each tile will append by choosing tool click on tile in world -->
-            <!-- will removed by click on them and then on tile in world by logic -->
-          </div>
-        </div>
+    <div id="landing-page">
+      <p>Minecraft</p>
+      <a href="./game.html"><button id="start-btn">START</button></a>
+      <div class="social">
+        <a href="#"><i class="fa-brands fa-facebook fa-2x" target="_blank"></i></a>
+        <a href="https://www.linkedin.com/in/benny-hassan-bb562b73/" target="_blank"
+          ><i class="fa-brands fa-linkedin fa-2x"></i
+        ></a>
+        <a href="https://github.com/bennyh960" target="_blank"><i class="fa-brands fa-github fa-2x"></i></a>
       </div>
     </div>
-    <script src="./scripts/app.js" type="module"></script>
-    <!-- <script src="./settings.js"></script> -->
   </body>
 </html>
