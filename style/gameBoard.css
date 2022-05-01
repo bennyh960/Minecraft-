@@ -89,19 +89,7 @@
   background-position: 0 -3rem;
 }
 
-/* animation alert */
-/* .WrongToolAlert {
-  background: r;
-} */
 @media screen and (max-width: 500px) {
-  .grid {
-    /* width: 400rem; */
-  }
-  .background {
-    /* width: 600rem; */
-    /* height: 50vh; */
-    /* border: 2px solid black; */
-  }
   .floor-tile-up,
   [tileType="floor-tile-up"] {
     background-image: url("../weekendImg/‏‏SpritesheetSmall.png");

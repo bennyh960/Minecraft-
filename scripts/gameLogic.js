@@ -27,6 +27,10 @@ toolsObj.chooseTool = function () {
 
 //Get correct tile by choosing correct tool. if so add tile to inventory and remove from world
 toolsObj.getTile = function (world, inventory) {
+  // document.querySelector(".inventory").addEventListener("click", (e) => {
+  //   if (e.target !== e.currentTarget) {};
+  //   else console.log("parent clicked");
+  // });
   world.forEach((row, i) => {
     row.forEach((tile, j) => {
       tile.addEventListener("click", () => {
@@ -40,8 +44,8 @@ toolsObj.getTile = function (world, inventory) {
           this.activeStored[0] = undefined;
           this.activeStored[1] = undefined;
           tile.animate(rotateTile, animateTiming);
-          apllyPyshics(world, i, j);
 
+          apllyPyshics(world, i, j);
           return;
         }
         if (this.activeTileList.includes(tile.getAttribute("tileType"))) {
@@ -59,11 +63,9 @@ toolsObj.getTile = function (world, inventory) {
           world[i][j].setAttribute("data-open", "true");
           tile.animate(rotateTile, animateTiming);
         } else if (tile.getAttribute("data-open") === "false") {
-          // console.log("x");
           tile.animate(wrongTool, animateTiming);
         }
       });
-      // }
     });
   });
 };

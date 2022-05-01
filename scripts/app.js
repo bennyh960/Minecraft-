@@ -4,6 +4,7 @@ import { drawWorld, drawFloor, clearDraw } from "./draw.js";
 
 let randomBtn = document.querySelector("#random");
 let resetBtn = document.querySelector("#reset");
+const inventory = document.querySelector(".inventory");
 
 // draw 2d world
 const world = drawWorld();
@@ -26,7 +27,6 @@ resetBtn.addEventListener("click", () => {
 changeView();
 
 // ============================================
-const inventory = document.querySelector(".inventory");
 
 // ==============
 toolsObj.chooseTool();
