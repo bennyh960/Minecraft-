@@ -15,14 +15,17 @@ html {
   text-align: center;
 }
 
-/* body {
-} */
-
 .container-all {
   display: flex;
   width: 100vw;
 }
 
-/* h2 {
-  font-family: "mineCraft";
-} */
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 3.3px;
+  }
+  .container-all {
+    display: flex;
+    flex-direction: column;
+  }
+}

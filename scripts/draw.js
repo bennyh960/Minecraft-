@@ -4,16 +4,6 @@ const rows = 20;
 export const gridDivsList = [];
 let divRowsList = [];
 const gridContainer = document.querySelector(".grid");
-// import { toolsObj } from "./gameLogic.js";
-
-// const GRID_WIDTH = divRowsList.length;
-// let column;
-// const lTetromino = [
-//   [1, column + 1, column * 2 + 1, 2],
-//   [GRID_WIDTH, GRID_WIDTH + 1, GRID_WIDTH + 2, GRID_WIDTH * 2 + 2],
-//   [1, GRID_WIDTH + 1, GRID_WIDTH * 2 + 1, GRID_WIDTH * 2],
-//   [GRID_WIDTH, GRID_WIDTH * 2, GRID_WIDTH * 2 + 1, GRID_WIDTH * 2 + 2],
-// ];
 
 // create world and draw it by appending style class and data attribute to each tile
 export function drawWorld(obj) {
@@ -25,40 +15,36 @@ export function drawWorld(obj) {
       cell.setAttribute("data-open", "true");
       cell.setAttribute("tileType", "x");
       gridContainer.appendChild(cell);
-      //   cell.style.backgroundColor = "red";
       divRowsList.push(cell);
+      cell.animate(rotateTile, animateTiming);
     }
     gridDivsList.push(divRowsList);
   }
-  // drawSquare(rock1, gridDivsList, 5, 3, 20, 10);
-  // drawSquare(rock2, gridDivsList, 2, 3, 10, 5);
-  // drawSquare(tree1, gridDivsList, 30, 10, 2, 5);
-  // drawSquare(tree2, gridDivsList, 25, 10, 20, 5);
+
   drawObjectInWorld(gridDivsList);
   return gridDivsList;
 }
 
 //! not working yet floor pyshics
-function apllyPyshics(maxHight) {
-  for (let rowIdx = gridDivsList.length - 1; rowIdx > gridDivsList.length - maxHight; rowIdx--) {
-    // console.log(rowIdx, "rowIdx");
-    for (let tileIdx = 0; tileIdx < gridDivsList[0].length; tileIdx++) {
-      // console.log("tileIdx: ", tileIdx);
-      // console.log(gridDivsList[rowIdx - 1][tileIdx].getAttribute("tileType"));
-      // prevent grass been bellow ground (floor-tile-up cant be bellow floor-tile-center)
-      if (
-        gridDivsList[rowIdx - 1][tileIdx].getAttribute("tileType") === "floor-tile-up" &&
-        gridDivsList[rowIdx][tileIdx].getAttribute("tileType") === "floor-tile-center"
-      )
-        gridDivsList[rowIdx - 1][tileIdx].setAttribute("tileType", "floor-tile-center");
-    }
+function apllyPyshics(world) {
+  if (
+    i > 1 &&
+    i < 18 &&
+    j > 1 &&
+    j < 90 &&
+    world[i][j].getAttribute("data-open", "false") &&
+    world[i + 1][j].getAttribute("data-open", "true")
+  ) {
+    world[i + 1][j] = world[i][j];
+    world[i][j].setAttribute("data-open", "true");
+    world[i][j].setAttribute("data-open", "false");
   }
 }
 
 // draw floor with random hight
 export function drawFloor() {
   let tileType;
-  const maxHight = 7;
+  const maxHight = 6;
   const random = 2 + Math.random() * maxHight;
   for (let i = 1; i < random; i++) {
     i < random - 1 ? (tileType = "floor-tile-center") : (tileType = "floor-tile-up");
@@ -73,6 +59,7 @@ export function drawFloor() {
   // apllyPyshics(maxHight);
 }
 
+// !need to delete the previews world
 export function clearDraw(worldGrid) {
   worldGrid.forEach((row) => {
     row.forEach((tile) => {
@@ -81,21 +68,11 @@ export function clearDraw(worldGrid) {
       tile.setAttribute("tileType", "");
     });
   });
-}
-
-export function drawRandom() {
-  let tileType = "rock-tile-center";
-  gridDivsList.forEach((row, rowIdx) => {
-    row.forEach((column, columnIdx) => {
-      if (column.getAttribute("data-open") === "true") {
-        column.setAttribute("tileType", tileType);
-      }
-    });
-  });
+  // gridDivsList.splice(0,20);
+  // return gridDivsList;
 }
 
 // draw shapes
-// todo work from here to add tile to screen
 function drawTile(world, x, y) {
   const { type, data } = this;
   world[y][x].setAttribute("tileType", type);
@@ -160,7 +137,7 @@ function drawSquare(tileObj, world, x, width, y, height) {
 
 // ! cant draw on coords 0 bug
 // ! intervalrandom max value cant be higher than 23
-const intervalMax = 23;
+const intervalMax = 22;
 function drawObjectInWorld(world) {
   let randomY = Math.floor(Math.random() * 10);
   let intervalRandom = Math.max(Math.floor(Math.random() * intervalMax), 5);
@@ -198,3 +175,13 @@ function drawTreesAndGround(world, rand1, rand2) {
   }
 }
 // ==============================================================
+
+// export function FadeIn(world) {
+//   world[18][30].animate(rotateTile, animateTiming);
+// }
+
+const rotateTile = [{ transform: "rotate(0) scale(1)" }, { transform: "rotate(360deg) scale(0)" }];
+const animateTiming = {
+  duration: 500,
+  iterations: 1,
+};

@@ -5,7 +5,6 @@
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-  /* background-image: linear-gradient(120deg, rgb(170, 52, 52), rgb(177, 177, 177)); */
 }
 
 .container-window {
@@ -15,8 +14,6 @@
   justify-content: center;
   flex-wrap: wrap;
   margin: auto;
-  /* border: solid 1px black; */
-  /* background-color: gray; */
   background-image: radial-gradient(rgb(81, 81, 81), rgb(169, 169, 169), rgb(190, 190, 190));
   /* align-items: center; */
 }
@@ -29,13 +26,27 @@
   /* background-color: white; */
   flex-direction: column;
 }
-/* [class="inventory"][data-view="vertical"] {
 
-  flex-direction: row;
+@media screen and (max-width: 500px) {
+  .window {
+    width: 100vw;
+    height: 25vh;
+  }
+  .grid {
+    height: 75vh;
+  }
+  .container-world {
+    width: 100vw;
+  }
+
+  #change-view {
+    display: none;
+  }
+
+  .setting > * {
+    margin-right: 15px;
+  }
 }
-[class="invetory"][data-view="horizon"] {
-  flex-direction: column;
-} */
 
 .container-window .setting {
   margin: auto;
@@ -43,7 +54,7 @@
 
 .tools-container {
   display: flex;
-  gap: 1.5rem;
+  gap: 15px;
   justify-content: center;
   flex-wrap: wrap;
   justify-content: center;
@@ -51,8 +62,9 @@
 }
 
 .tools-container > * {
-  width: 5rem;
-  height: 5rem;
+  width: 50px;
+  height: 50px;
+
   background-color: gray;
   background-size: cover;
   box-shadow: 2px 2px 2px;
@@ -65,21 +77,12 @@
 
 .active {
   background-color: rgb(74, 74, 74);
-  /* border: 2px solid black; */
-
-  /* animation: ; */
 }
-
-/* @keyframes */
 
 .active-stored {
   cursor: pointer;
   transform: scale(1.3);
 }
-
-/* .active-stored:hover {
-  border: black solid 1px;
-} */
 
 .active-stored:active {
   transform: scale(1.5);
@@ -98,23 +101,16 @@
 .inventory {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 5px;
   justify-content: center;
   align-items: center;
   height: fit-content;
   width: 90%;
-  /* align-items: center; */
-  /* align-items: flex-start; */
-  /* height: 11rem; */
-  /* width: 14rem; */
-  /* background-color: rgb(49, 49, 49); */
 }
 
 .inventory > * {
   background-color: gray;
-  width: 3rem;
-  height: 3rem;
+  width: 30px;
+  height: 30px;
   border: 3px solid rgb(93, 93, 93);
-  /* align-self: flex-start; */
-  /* justify-self: flex-start; */
 }

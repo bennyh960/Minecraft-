@@ -40,6 +40,10 @@ toolsObj.getTile = function (world, inventory) {
           this.activeStored[0] = undefined;
           this.activeStored[1] = undefined;
           tile.animate(rotateTile, animateTiming);
+
+          setInterval(function () {
+            apllyPyshics(world, i, j);
+          }, 1000);
           return;
         }
         if (this.activeTileList.includes(tile.getAttribute("tileType"))) {
@@ -88,3 +92,23 @@ toolsObj.takeFromInventory = function () {
     });
   });
 };
+
+//! not working yet floor pyshics
+function apllyPyshics(world, i, j) {
+  if (
+    i > 1 &&
+    i < 18 &&
+    j > 1 &&
+    j < 90 &&
+    world[i][j].getAttribute("data-open") === "false" &&
+    world[i + 1][j].getAttribute("data-open") === "true"
+  ) {
+    const type = world[i][j].getAttribute("tileType");
+    world[i][j].setAttribute("tileType", "");
+    world[i][j].setAttribute("data-open", "true");
+    world[i + 1][j].setAttribute("tileType", type);
+    world[i + 1][j].setAttribute("data-open", "false");
+    world[i + 1][j].classList.add("cell");
+  }
+  return setInterval(apllyPyshics(world, i + 1, j), 2500);
+}
