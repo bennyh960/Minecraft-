@@ -93,15 +93,14 @@
 /* .WrongToolAlert {
   background: r;
 } */
-@media screen and (max-width: 50px) {
-  html {
-    font-size: 5px;
-  }
+@media screen and (max-width: 500px) {
   .grid {
+    /* width: 400rem; */
   }
   .background {
-    width: 100rem;
-    /* height: 200vh; */
+    /* width: 600rem; */
+    /* height: 50vh; */
+    /* border: 2px solid black; */
   }
   .floor-tile-up,
   [tileType="floor-tile-up"] {
@@ -110,7 +109,7 @@
   .floor-tile-center,
   [tileType="floor-tile-center"] {
     background-image: url("../weekendImg/‏‏SpritesheetSmall.png");
-    background-position: -10px 0;
+    background-position: -20px 0;
   }
   .rock1,
   [tileType="rock1"] {
@@ -126,17 +125,18 @@
   .rock3,
   [tileType="rock3"] {
     background-image: url("../weekendImg/‏‏SpritesheetSmall.png");
-    background-position: -12rem -3rem;
+    background-position: -120px -30px;
   }
   .rock4,
   [tileType="rock4"] {
     background-image: url("../weekendImg/‏‏SpritesheetSmall.png");
-    background-position: -15rem -3rem;
+    /* background-position: -18rem -3rem; */
+    background-position: -9rem -6rem;
   }
   .rock5,
   [tileType="rock5"] {
     background-image: url("../weekendImg/‏‏SpritesheetSmall.png");
-    background-position: 0rem -6rem;
+    background-position: 0rem -35rem;
   }
 
   .wall,
@@ -147,11 +147,11 @@
   .tree-trunk,
   [tileType="tree-trunk"] {
     background-image: url("../weekendImg/‏‏SpritesheetSmall.png");
-    background-position: -15rem 0;
+    background-position: -80px 0;
   }
   .tree-leaf,
   [tileType="tree-leaf"] {
     background-image: url("../weekendImg/‏‏SpritesheetSmall.png");
-    background-position: 0 -3rem;
+    background-position: 0 -60px;
   }
 }
