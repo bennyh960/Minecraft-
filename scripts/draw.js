@@ -28,7 +28,7 @@ export function drawWorld(obj) {
 // draw floor with random hight
 export function drawFloor() {
   let tileType;
-  const maxHight = 6;
+  const maxHight = 3;
   const random = 2 + Math.random() * maxHight;
   for (let i = 1; i < random; i++) {
     i < random - 1 ? (tileType = "floor-tile-center") : (tileType = "floor-tile-up");
@@ -36,7 +36,7 @@ export function drawFloor() {
       if (floor.getAttribute("data-open") === "true") {
         floor.setAttribute("tileType", tileType);
         floor.setAttribute("data-open", "false");
-        console.log(floor.getAttribute("tileType")); //todo del log
+        // console.log(floor.getAttribute("tileType")); //todo del log
       }
     });
   }
@@ -127,7 +127,7 @@ function drawObjectInWorld(world) {
   let intervalRandom = Math.max(Math.floor(Math.random() * intervalMax), 5);
 
   drawTreesAndGround(world, intervalRandom, randomY);
-  drawHome(world, intervalRandom);
+  drawHome(world, intervalRandom - 10);
 }
 
 // ==========================================
@@ -149,20 +149,30 @@ function drawHome(world, rand1) {
 function drawTreesAndGround(world, rand1, rand2) {
   let startX = 23;
   let startY = 13; //18 is the first start so y+h must be 18
-  for (let times = 0; times < 10; times += 2) {
+
+  drawDimonds(rock3, world, 1);
+  drawDimonds(rock2, world, 2);
+  drawDimonds(rock4, world, 2);
+  for (let times = 0; times < 9; times += 2) {
     drawSquare(tree2, world, startX, 3, startY - rand2, 3 + rand2);
     drawSquare(tree1, world, startX + 1, 1, startY + 3 - rand2, 2 + rand2);
     drawSquare(grass, world, 0, world[0].length, startY + 5, 1);
-
-    drawSquare(ground, world, 0, world[0].length, startY + 6, world.length - startY - 6);
     startX += rand1;
   }
+  drawSquare(ground, world, 0, world[0].length, startY + 6, world.length - startY - 6);
+  // draw dimonds
 }
 // ==============================================================
 
-// export function FadeIn(world) {
-//   world[18][30].animate(rotateTile, animateTiming);
-// }
+function drawDimonds(type, world, h) {
+  const randX = Math.floor(Math.random() * 10);
+  for (let i = 0; i < world[0].length - 11; i += 5) {
+    const randY = Math.floor(Math.random() * 2);
+    const width = Math.floor(Math.random() * 3);
+    // const hight = Math.floor(Math.random() * 3);
+    drawSquare(type, world, randX + i, width, 18 - randY, h);
+  }
+}
 
 const rotateTile = [{ transform: "rotate(0) scale(1)" }, { transform: "rotate(360deg) scale(0)" }];
 const animateTiming = {
